@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Country",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "object",
+      "properties": {
+        "common": { "type": "string" },
+        "official": { "type": "string" },
+        "nativeName": {
+          "type": "object",
+          "patternProperties": {
+            "^[a-zA-Z]+$": {
+              "type": "object",
+              "properties": {
+                "official": { "type": "string" },
+                "common": { "type": "string" }
+              },
+              "required": ["official", "common"]
+            }
+          }
+        }
+      },
+      "required": ["common", "official", "nativeName"]
+    },
+    "tld": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "cca2": { "type": "string" },
+    "ccn3": { "type": "string" },
+    "cca3": { "type": "string" },
+    "cioc": { "type": "string" },
+    "independent": { "type": "boolean" },
+    "status": { "type": "string" },
+    "unMember": { "type": "boolean" },
+    "currencies": {
+      "type": "object",
+      "patternProperties": {
+        "^[A-Z]{3}$": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "symbol": { "type": "string" }
+          },
+          "required": ["name", "symbol"]
+        }
+      }
+    },
+    "idd": {
+      "type": "object",
+      "properties": {
+        "root": { "type": "string" },
+        "suffixes": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "capital": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "altSpellings": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "region": { "type": "string" },
+    "subregion": { "type": "string" },
+    "languages": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z]{2,}$": { "type": "string" }
+      }
+    },
+    "translations": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z]+$": {
+          "type": "object",
+          "properties": {
+            "official": { "type": "string" },
+            "common": { "type": "string" }
+          },
+          "required": ["official", "common"]
+        }
+      }
+    },
+    "latlng": {
+      "type": "array",
+      "items": { "type": "number" },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "landlocked": { "type": "boolean" },
+    "borders": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "area": { "type": "number" },
+    "flag": { "type": "string" },
+    "demonyms": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z]+$": {
+          "type": "object",
+          "properties": {
+            "f": { "type": "string" },
+            "m": { "type": "string" }
+          },
+          "required": ["f", "m"]
+        }
+      }
+    }
+  },
+  "required": ["name", "cca2", "cca3", "region", "latlng", "flag", "languages"]
+}
